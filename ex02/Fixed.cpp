@@ -48,6 +48,38 @@ std::ostream& operator<<(std::ostream& flux, const Fixed& obj) {
 	return flux;
 }
 
+// ======================= OPÉRATEURS DE COMPARAISON =======================
+
+bool Fixed::operator>(const Fixed& ref) const
+{
+	return _rawbits > ref._rawbits;
+}
+
+bool Fixed::operator<(const Fixed& ref) const
+{
+	return _rawbits < ref._rawbits;
+}
+
+bool Fixed::operator>=(const Fixed& ref) const
+{
+	return _rawbits >= ref._rawbits;
+}
+
+bool Fixed::operator<=(const Fixed& ref) const
+{
+	return _rawbits <= ref._rawbits;
+}
+
+bool Fixed::operator==(const Fixed& ref) const
+{
+	return _rawbits == ref._rawbits;
+}
+
+bool Fixed::operator!=(const Fixed& ref) const
+{
+	return _rawbits != ref._rawbits;
+}
+
 // ======================= OPÉRATEURS ARITHMÉTIQUES =======================
 Fixed Fixed::operator+(const Fixed& ref) const {
 	Fixed temp;
@@ -97,4 +129,34 @@ Fixed Fixed::operator--(int) {
 	Fixed temp(*this);
 	_rawbits -= 1;
 	return temp;
+}
+
+// ======================= Fonction Compartives =======================
+
+Fixed& Fixed::max(Fixed& num1, Fixed& num2)
+{
+	if (num1 > num2)
+		return num1;
+	return num2;
+}
+
+const Fixed& Fixed::max(const Fixed& num1, const Fixed& num2)
+{
+	if (num1 > num2)
+		return num1;
+	return num2;
+}
+
+Fixed& Fixed::min(Fixed& num1, Fixed& num2)
+{
+	if (num1 < num2)
+		return num1;
+	return num2;
+}
+
+const Fixed& Fixed::min(const Fixed& num1, const Fixed& num2)
+{
+	if (num1 < num2)
+		return num1;
+	return num2;
 }
